@@ -1,0 +1,15 @@
+{
+  "short_name": "AI.Print",
+  "name": "AI.Print Studio",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "48x48 72x72 96x96 144x144",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#000000"
+}
