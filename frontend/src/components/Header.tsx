@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Phone, MapPin, Clock } from 'lucide-react';
 import { Button } from './ui/Button';
+import { Logo } from './Logo';
 
 export const Header: React.FC = () => {
   const location = useLocation();
@@ -11,12 +12,6 @@ export const Header: React.FC = () => {
   const isFiz = location.pathname.startsWith('/fiz');
   const isJur = location.pathname.startsWith('/jur');
   
-  // If we are on root or common pages, we might default to one or just show generic
-  // But the requirement says "switch in header".
-  // If on root, maybe we don't show the switch or it doesn't matter.
-  // Let's assume if not fiz or jur, we default to fiz for the switch UI but maybe not active state?
-  // Actually, if on root, we probably don't need the switch as much, but let's keep it.
-
   const handleSwitch = (type: 'fiz' | 'jur') => {
     navigate(`/${type}`);
     setIsMenuOpen(false);
@@ -27,8 +22,7 @@ export const Header: React.FC = () => {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 font-bold text-xl tracking-tighter text-white">
-          <div className="h-8 w-8 rounded-lg bg-white text-black flex items-center justify-center">AI</div>
-          <span>Print Studio</span>
+          <Logo className="h-8 w-auto" />
         </Link>
 
         {/* Desktop Nav */}

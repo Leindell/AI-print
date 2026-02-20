@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowDown, Zap, Star, PenTool } from 'lucide-react';
 import { Button } from './ui/Button';
+import { TelegramButton } from './TelegramButton';
 
 interface SectionHeroProps {
   title: string;
@@ -49,14 +50,24 @@ export const SectionHero: React.FC<SectionHeroProps> = ({
           {description}
         </p>
 
-        <Button 
-          onClick={onScrollToServices}
-          size="lg"
-          className={`h-14 rounded-full px-8 text-lg font-semibold shadow-lg shadow-${accentColor}-500/20 hover:shadow-${accentColor}-500/30 transition-all`}
-        >
-          Перейти к услугам
-          <ArrowDown className="ml-2 h-5 w-5 animate-bounce" />
-        </Button>
+        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Button 
+            onClick={onScrollToServices}
+            size="lg"
+            className={`h-14 rounded-full px-8 text-lg font-semibold shadow-lg shadow-${accentColor}-500/20 hover:shadow-${accentColor}-500/30 transition-all`}
+          >
+            Перейти к услугам
+            <ArrowDown className="ml-2 h-5 w-5 animate-bounce" />
+          </Button>
+          
+          <TelegramButton 
+            variant="outline"
+            size="lg"
+            className="h-14 rounded-full px-8 text-lg border-zinc-700 hover:bg-zinc-800"
+          >
+            Заказать в Telegram
+          </TelegramButton>
+        </div>
       </motion.div>
 
       {/* Features Grid at Bottom */}

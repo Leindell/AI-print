@@ -1,9 +1,11 @@
 import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { FIZ_CATEGORIES, JUR_CATEGORIES } from '../data/services';
-import { ArrowLeft, Clock, Banknote, CheckCircle, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Clock, Banknote, CheckCircle, MessageCircle, Package, Timer } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { motion } from 'motion/react';
+import { OrderForm } from '../components/OrderForm';
+import { TelegramButton } from '../components/TelegramButton';
 
 interface ServiceDetailPageProps {
   type: 'fiz' | 'jur';
@@ -28,13 +30,6 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ type }) =>
     );
   }
 
-  const handleContact = () => {
-    // Open Telegram or WhatsApp
-    const message = `Здравствуйте! Меня интересует услуга "${service.title}" (${type === 'fiz' ? 'Физ. лицо' : 'Юр. лицо'}).`;
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://t.me/your_telegram_username?text=${encodedMessage}`, '_blank');
-  };
-
   return (
     <div className="container mx-auto px-4 py-12">
       <Button
@@ -52,9 +47,17 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ type }) =>
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="mb-6 inline-flex items-center rounded-full border border-zinc-800 bg-zinc-900/50 px-3 py-1 text-sm text-zinc-400">
-            {category.title}
+          <div className="mb-6 flex flex-wrap items-center gap-3">
+            <div className="inline-flex items-center rounded-full border border-zinc-800 bg-zinc-900/50 px-3 py-1 text-sm text-zinc-400">
+              {category.title}
+            </div>
+            {service.tags && service.tags.map(tag => (
+              <div key={tag} className="inline-flex items-center rounded-full bg-indigo-500/10 px-3 py-1 text-sm font-medium text-indigo-400 border border-indigo-500/20">
+                {tag}
+              </div>
+            ))}
           </div>
+
           <h1 className="mb-6 text-4xl font-bold tracking-tight text-white md:text-5xl">
             {service.title}
           </h1>
@@ -63,7 +66,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ type }) =>
           </p>
 
           <div className="mb-8 grid gap-4 sm:grid-cols-2">
-            <div className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-4">
+            <div className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-4 transition-colors hover:bg-zinc-900/50">
               <div className="mb-2 flex items-center gap-2 text-zinc-400">
                 <Banknote className="h-5 w-5" />
                 <span className="font-medium">Стоимость</span>
@@ -71,7 +74,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ type }) =>
               <div className="text-2xl font-bold text-white">{service.price}</div>
             </div>
             {service.deadline && (
-              <div className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-4">
+              <div className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-4 transition-colors hover:bg-zinc-900/50">
                 <div className="mb-2 flex items-center gap-2 text-zinc-400">
                   <Clock className="h-5 w-5" />
                   <span className="font-medium">Сроки</span>
@@ -79,24 +82,32 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ type }) =>
                 <div className="text-2xl font-bold text-white">{service.deadline}</div>
               </div>
             )}
+            {service.minQty && (
+              <div className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-4 transition-colors hover:bg-zinc-900/50">
+                <div className="mb-2 flex items-center gap-2 text-zinc-400">
+                  <Package className="h-5 w-5" />
+                  <span className="font-medium">Мин. заказ</span>
+                </div>
+                <div className="text-xl font-bold text-white">{service.minQty}</div>
+              </div>
+            )}
           </div>
 
-          <div className="flex flex-col gap-4 sm:flex-row">
-            <Button onClick={handleContact} size="lg" className="gap-2">
-              <MessageCircle className="h-5 w-5" />
-              Написать менеджеру
-            </Button>
+          <div className="mb-8">
+             <TelegramButton 
+               serviceSlug={service.slug} 
+               className="w-full sm:w-auto bg-[#2AABEE] hover:bg-[#229ED9] text-white shadow-lg shadow-blue-500/20"
+               size="lg"
+             >
+               Заказать через Telegram
+             </TelegramButton>
+             <p className="mt-2 text-xs text-zinc-500">
+               Откроется чат с ботом для быстрого оформления
+             </p>
           </div>
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="space-y-8"
-        >
           {service.orderSteps && (
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-900/20 p-8">
+            <div className="mb-8 rounded-2xl border border-zinc-800 bg-zinc-900/20 p-8">
               <h3 className="mb-6 text-xl font-bold text-white">Как заказать</h3>
               <div className="space-y-6">
                 {service.orderSteps.map((step, index) => (
@@ -126,6 +137,16 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ type }) =>
               </ul>
             </div>
           )}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="space-y-8"
+        >
+          {/* Order Form Component */}
+          <OrderForm serviceName={service.title} price={service.price} />
         </motion.div>
       </div>
     </div>

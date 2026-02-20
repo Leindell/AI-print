@@ -9,8 +9,6 @@ import { ServiceDetailPage } from './pages/ServiceDetailPage';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
 
-import Footer from "./components/Footer";
-
 export default function App() {
   return (
     <Router>

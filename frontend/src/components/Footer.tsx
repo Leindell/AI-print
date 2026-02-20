@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { Logo } from './Logo';
 
 export const Footer: React.FC = () => {
   return (
@@ -8,7 +9,7 @@ export const Footer: React.FC = () => {
       <div className="container mx-auto px-4 grid gap-8 md:grid-cols-4">
         <div className="space-y-4">
           <Link to="/" className="flex items-center gap-2 font-bold text-xl tracking-tighter text-white">
-            AI.Print Studio
+            <Logo className="h-6 w-auto" />
           </Link>
           <p className="text-sm leading-relaxed">
             Современная типография полного цикла.
@@ -39,15 +40,15 @@ export const Footer: React.FC = () => {
           <h3 className="mb-4 font-semibold text-white">Контакты</h3>
           <div className="flex items-center gap-3 text-sm">
             <MapPin className="h-4 w-4 shrink-0" />
-            <span>г. Москва, ул. Примерная, 123</span>
+            <span>г. Пермь, Переселенческая ул., 100</span>
           </div>
           <div className="flex items-center gap-3 text-sm">
             <Phone className="h-4 w-4 shrink-0" />
-            <a href="tel:+79990000000" className="hover:text-white transition-colors">+7 (999) 000-00-00</a>
+            <a href="tel:+79958583035" className="hover:text-white transition-colors">+7 (995) 858-30-35</a>
           </div>
           <div className="flex items-center gap-3 text-sm">
             <Mail className="h-4 w-4 shrink-0" />
-            <a href="mailto:info@aiprint.ru" className="hover:text-white transition-colors">info@aiprint.ru</a>
+            <a href="mailto:zalogosfera@bk.ru" className="hover:text-white transition-colors">zalogosfera@bk.ru</a>
           </div>
         </div>
       </div>

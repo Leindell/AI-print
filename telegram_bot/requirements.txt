@@ -1,6 +1,0 @@
-fastapi
-uvicorn[standard]
-aiogram
-python-dotenv
-requests
-httpx

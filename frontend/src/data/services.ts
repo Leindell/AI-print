@@ -10,6 +10,9 @@ export interface Service {
   deadline?: string;
   orderSteps?: string[];
   details?: string[];
+  minQty?: string;
+  turnaroundTime?: string;
+  tags?: string[];
 }
 
 export interface Category {
@@ -37,6 +40,8 @@ export const FIZ_CATEGORIES: Category[] = [
         fullDesc: "Классический формат 10x12 см с белой рамкой. Идеально для мудбордов, подарков и сохранения воспоминаний в винтажном стиле. Печать на плотной фотобумаге.",
         price: "от 45 ₽/шт",
         deadline: "15 мин",
+        minQty: "1 шт",
+        tags: ["Хит", "Подарок"],
         orderSteps: ["Загрузите фото", "Выберите количество", "Оплатите онлайн или при получении"]
       },
       {
@@ -47,6 +52,8 @@ export const FIZ_CATEGORIES: Category[] = [
         fullDesc: "Самый популярный формат для фотоальбомов. Глянцевая или матовая бумага на выбор. Высокая цветопередача.",
         price: "от 15 ₽/шт",
         deadline: "1 час",
+        minQty: "1 шт",
+        tags: ["Популярное"],
         orderSteps: ["Пришлите фото", "Укажите тип бумаги", "Заберите заказ"]
       },
       {
@@ -56,7 +63,8 @@ export const FIZ_CATEGORIES: Category[] = [
         shortDesc: "Большие снимки",
         fullDesc: "Формат 21x30 см. Подходит для портретов и вставки в рамки.",
         price: "от 80 ₽/шт",
-        deadline: "1 час"
+        deadline: "1 час",
+        minQty: "1 шт"
       }
     ]
   },
@@ -74,7 +82,8 @@ export const FIZ_CATEGORIES: Category[] = [
         shortDesc: "Ч/Б и цветная",
         fullDesc: "Быстрая ксерокопия документов. Автоматическая подача для больших объемов.",
         price: "10 ₽/стр",
-        deadline: "Моментально"
+        deadline: "Моментально",
+        minQty: "1 стр"
       },
       { 
         id: "f5", 
@@ -83,7 +92,8 @@ export const FIZ_CATEGORIES: Category[] = [
         shortDesc: "В PDF или JPG",
         fullDesc: "Сканирование документов с отправкой на почту или записью на флешку.",
         price: "15 ₽/стр",
-        deadline: "Моментально"
+        deadline: "Моментально",
+        minQty: "1 стр"
       },
       {
         id: "f6",
@@ -92,7 +102,8 @@ export const FIZ_CATEGORIES: Category[] = [
         shortDesc: "С флешки или почты",
         fullDesc: "Печать документов с любых носителей. Ч/Б и цветная печать.",
         price: "от 10 ₽/стр",
-        deadline: "Моментально"
+        deadline: "Моментально",
+        minQty: "1 стр"
       }
     ]
   },
@@ -110,7 +121,9 @@ export const FIZ_CATEGORIES: Category[] = [
         shortDesc: "Белые и цветные",
         fullDesc: "Нанесение любого изображения или надписи на керамическую кружку. Стойкое покрытие.",
         price: "от 450 ₽",
-        deadline: "1 день"
+        deadline: "1 день",
+        minQty: "1 шт",
+        tags: ["Подарок"]
       },
       {
         id: "f8",
@@ -119,7 +132,8 @@ export const FIZ_CATEGORIES: Category[] = [
         shortDesc: "Принты любой сложности",
         fullDesc: "Прямая печать или термоперенос. Футболки из 100% хлопка в наличии.",
         price: "от 900 ₽",
-        deadline: "1-2 дня"
+        deadline: "1-2 дня",
+        minQty: "1 шт"
       }
     ]
   }
@@ -140,6 +154,9 @@ export const JUR_CATEGORIES: Category[] = [
         shortDesc: "Цифровая и офсетная печать",
         fullDesc: "Стандартные визитки 90x50 мм или евроформат. Мелованная бумага 300г, лен, touch cover.",
         price: "от 2.5 ₽/шт",
+        deadline: "от 1 часа",
+        minQty: "100 шт",
+        tags: ["B2B"],
         details: ["Тиражи от 100 шт", "Срок от 1 часа", "Дизайн макета"]
       },
       {
@@ -149,6 +166,8 @@ export const JUR_CATEGORIES: Category[] = [
         shortDesc: "А6, А5, А4",
         fullDesc: "Рекламные листовки для раздачи и стоек. Офсетная печать больших тиражей.",
         price: "от 1.8 ₽/шт",
+        deadline: "1-3 дня",
+        minQty: "1000 шт",
         details: ["Тиражи от 1000 шт", "Глянцевая бумага 130г"]
       },
       {
@@ -157,7 +176,9 @@ export const JUR_CATEGORIES: Category[] = [
         title: "Буклеты",
         shortDesc: "Евробуклеты, 2 фальца",
         fullDesc: "Информационные буклеты для выставок и офисов.",
-        price: "от 15 ₽/шт"
+        price: "от 15 ₽/шт",
+        deadline: "1-3 дня",
+        minQty: "100 шт"
       }
     ]
   },
@@ -174,7 +195,9 @@ export const JUR_CATEGORIES: Category[] = [
         title: "Баннеры", 
         shortDesc: "Люверсы, проклейка",
         fullDesc: "Печать на баннерной ткани Frontlit. Устойчивость к выгоранию.",
-        price: "от 450 ₽/м²" 
+        price: "от 450 ₽/м²",
+        deadline: "1-2 дня",
+        minQty: "1 м²"
       },
       { 
         id: "j5", 
@@ -182,7 +205,9 @@ export const JUR_CATEGORIES: Category[] = [
         title: "Печать чертежей", 
         shortDesc: "А2, А1, А0",
         fullDesc: "Инженерная печать чертежей и схем. Фальцовка по ГОСТ.",
-        price: "от 150 ₽/лист" 
+        price: "от 150 ₽/лист",
+        deadline: "1 час",
+        minQty: "1 лист"
       }
     ]
   },
@@ -199,7 +224,9 @@ export const JUR_CATEGORIES: Category[] = [
         title: "Календари",
         shortDesc: "Квартальные, настольные",
         fullDesc: "Фирменные календари с логотипом компании. Отличный корпоративный подарок.",
-        price: "от 250 ₽/шт"
+        price: "от 250 ₽/шт",
+        deadline: "3-5 дней",
+        minQty: "10 шт"
       },
       {
         id: "j7",
@@ -207,7 +234,9 @@ export const JUR_CATEGORIES: Category[] = [
         title: "Ручки с логотипом",
         shortDesc: "Тампопечать, гравировка",
         fullDesc: "Нанесение логотипа на пластиковые и металлические ручки.",
-        price: "от 35 ₽/шт"
+        price: "от 35 ₽/шт",
+        deadline: "3-5 дней",
+        minQty: "50 шт"
       }
     ]
   }
