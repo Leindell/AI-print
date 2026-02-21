@@ -215,7 +215,7 @@ export function createOrderIds(source: 'tg' | 'http', data: Partial<OrderData>):
     INSERT INTO orders (source, service, total_price, client_name, client_username, telegram_user_id)
     VALUES (?, ?, ?, ?, ?, ?)
   `);
-  
+
   const info = stmt.run(
     source,
     data.service || 'Unknown',

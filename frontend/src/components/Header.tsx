@@ -21,8 +21,8 @@ export const Header: React.FC = () => {
     <header className="sticky top-0 z-50 w-full border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 font-bold text-xl tracking-tighter text-white">
-          <Logo className="h-8 w-auto" />
+        <Link to="/" className="flex items-center gap-3 font-bold text-xl tracking-tighter text-white group">
+          <Logo className="h-12 w-auto text-white transition-opacity group-hover:opacity-90" />
         </Link>
 
         {/* Desktop Nav */}

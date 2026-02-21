@@ -99,17 +99,21 @@ export async function startBot() {
   }
 
   // Проверка токена/доступа
-  const me = await bot.telegram.getMe();
-  console.log("BOT: getMe OK:", { id: me.id, username: me.username });
+  try {
+    const me = await bot.telegram.getMe();
+    console.log("BOT: getMe OK:", { id: me.id, username: me.username });
 
-  await bot.telegram.deleteWebhook({ drop_pending_updates: true });
-  console.log("Webhook deleted (polling mode).");
+    await bot.telegram.deleteWebhook({ drop_pending_updates: true });
+    console.log("Webhook deleted (polling mode).");
 
-  bot.launch().catch((e) => console.error("BOT LAUNCH ERROR:", e));
-  console.log("BOT: launch() called (server continues)");
+    bot.launch().catch((e) => console.error("BOT LAUNCH ERROR:", e));
+    console.log("BOT: launch() called (server continues)");
 
-  process.once("SIGINT", () => bot.stop("SIGINT"));
-  process.once("SIGTERM", () => bot.stop("SIGTERM"));
+    process.once("SIGINT", () => bot.stop("SIGINT"));
+    process.once("SIGTERM", () => bot.stop("SIGTERM"));
+  } catch (e) {
+    console.error("BOT START ERROR:", e);
+  }
 }
 
 export { handleOrder } from "./core";

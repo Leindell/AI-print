@@ -1,49 +1,20 @@
-# AI.Print Studio
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-Проект веб-сайта для студии печати AI.Print. Сайт разделен на два основных направления: услуги для физических лиц и B2B услуги для юридических лиц.
+# Run and deploy your AI Studio app
 
-## Структура проекта
+This contains everything you need to run your app locally.
 
-- **`/src`**: Исходный код приложения
-  - **`components/`**: Переиспользуемые UI компоненты (Header, Footer, Button, Layout и т.д.)
-  - **`pages/`**: Компоненты страниц
-    - **`fiz/`**: Страницы для физ. лиц
-    - **`jur/`**: Страницы для юр. лиц
-  - **`data/`**: Данные услуг и категорий (`services.ts`)
-- **`public/`**: Статические файлы
+View your app in AI Studio: https://ai.studio/apps/3a7364c1-034c-4032-b92e-55f23444ce4b
 
-## Установка и запуск
+## Run Locally
 
-Для запуска проекта вам потребуется [Node.js](https://nodejs.org/) (версия 18 или выше).
+**Prerequisites:**  Node.js
 
-1. **Скачайте и распакуйте проект**
-2. **Откройте терминал** в папке проекта
-3. **Установите зависимости**:
-   ```bash
-   npm install
-   ```
-4. **Запустите режим разработки**:
-   ```bash
-   npm run dev
-   ```
-5. **Откройте браузер** по адресу, указанному в терминале (обычно http://localhost:5173)
 
-## Сборка для продакшена
-
-Для создания оптимизированной версии сайта выполните:
-
-```bash
-npm run build
-```
-
-Файлы будут собраны в папку `dist`.
-
-## Технологии
-
-- **React**
-- **TypeScript**
-- **Tailwind CSS**
-- **Vite**
-- **React Router**
-- **Lucide React** (иконки)
-- **Framer Motion** (анимации)
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

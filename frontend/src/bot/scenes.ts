@@ -26,10 +26,10 @@ const orderWizard = new Scenes.WizardScene<BotContext>(
     // Given the list is potentially long, let's show categories.
     // Actually, let's just use the flat list but paginated or grouped if needed.
     // For now, let's take top 6 services or just list them.
-    
+
     // Let's use a simplified list for the bot based on the data
     const buttons = allServices.slice(0, 8).map(s => [Markup.button.callback(s.title, `service_${s.id}`)]);
-    
+
     await ctx.reply('Выберите услугу:', Markup.inlineKeyboard(buttons));
     return ctx.wizard.next();
   },
@@ -112,7 +112,7 @@ const orderWizard = new Scenes.WizardScene<BotContext>(
     } else if (ctx.message && 'text' in ctx.message) {
       ctx.session.order.comment = ctx.message.text;
     }
-    
+
     ctx.session.order.files = [];
     await ctx.reply('Прикрепите файлы (фото или документы). Когда закончите, нажмите "Готово".', Markup.inlineKeyboard([
       Markup.button.callback('✅ Готово', 'files_done')
@@ -125,7 +125,7 @@ const orderWizard = new Scenes.WizardScene<BotContext>(
       // Show summary
       const order = ctx.session.order;
       const totalPrice = (order.unitPrice || 0) * (order.qty || 1);
-      
+
       const summary = `Ваш заказ:
 Услуга: ${order.service}
 Размер: ${order.size}
@@ -176,7 +176,7 @@ const orderWizard = new Scenes.WizardScene<BotContext>(
         const clientName = `${ctx.from?.first_name || ''} ${ctx.from?.last_name || ''}`.trim() || 'Unknown';
         const clientUsername = ctx.from?.username;
         const telegramUserId = ctx.from?.id || 0;
-        
+
         // Generate IDs using centralized logic
         const { internal_id, order_number } = createOrderIds('tg', {
           service: ctx.session.order.service,
@@ -208,10 +208,10 @@ const orderWizard = new Scenes.WizardScene<BotContext>(
 
         await sendOrderToManager(orderData);
         await ctx.reply('Заказ отправлен менеджеру! ✅');
-        
+
         // Clear session
         ctx.session.order = {};
-        
+
         return ctx.scene.leave();
       } else if (ctx.callbackQuery.data === 'cancel_order') {
         await ctx.reply('Заказ отменен.');
