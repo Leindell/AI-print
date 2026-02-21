@@ -19,13 +19,18 @@ export const About: React.FC = () => {
             </p>
           </div>
           
-          <div className="relative aspect-video overflow-hidden rounded-3xl border border-zinc-900 bg-zinc-950">
-             <img 
-               src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?q=80&w=2070&auto=format&fit=crop" 
-               alt="Интерьер студии Ai.Print" 
-               className="absolute inset-0 h-full w-full object-cover"
-             />
-          </div>
+   <div className="w-full flex items-center justify-center">
+  <div className="w-full max-w-[900px] overflow-hidden rounded-3xl border border-zinc-900 bg-black shadow-2xl">
+    <div className="h-[420px] w-full flex items-center justify-center bg-black">
+      <img
+        src="/studio.jpg"
+        alt="Интерьер студии Ai.Print"
+        className="h-full w-full object-contain bg-black"
+        draggable={false}
+      />
+    </div>
+  </div>
+</div>
         </div>
       </div>
     </div>

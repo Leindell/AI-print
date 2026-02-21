@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <Logo className="h-10 w-auto text-white transition-opacity group-hover:opacity-90" />
+          <Logo className="h-10 w-auto object-contain block transition-opacity group-hover:opacity-90" />
         </Link>
 
         {/* Desktop Nav */}

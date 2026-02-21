@@ -8,10 +8,10 @@ export const Footer: React.FC = () => {
     const checkStatus = () => {
       const now = new Date();
       // Use Moscow time as requested
-      const mskTime = new Date(now.toLocaleString("en-US", { timeZone: "Europe/Moscow" }));
-      const day = mskTime.getDay(); // 0 = Sunday
-      const hours = mskTime.getHours();
-      const minutes = mskTime.getMinutes();
+      const permTime = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Yekaterinburg" }));
+      const day = permTime.getDay(); // 0 = Sunday
+      const hours = permTime.getHours();
+      const minutes = permTime.getMinutes();
       const timeInMinutes = hours * 60 + minutes;
 
       // Schedule:
@@ -52,7 +52,7 @@ export const Footer: React.FC = () => {
               <span className={`relative inline-flex h-2 w-2 rounded-full ${isOpen ? 'bg-green-500' : 'bg-red-500'}`}></span>
             </span>
             <span className={isOpen ? 'text-green-500' : 'text-red-500'}>
-              {isOpen ? '🟢 Магазин открыт сейчас' : '🔴 Сейчас закрыто'}
+              {isOpen ? 'Магазин сейчас открыт' : 'Магазин сейчас закрыт'}
             </span>
           </div>
         </div>

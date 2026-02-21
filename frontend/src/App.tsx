@@ -1,6 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import { Layout } from './components/Layout';
+import { ScrollToTop } from './components/ScrollToTop';
+
 import { LandingSplitter } from './pages/LandingSplitter';
 import { FizHome } from './pages/fiz/FizHome';
 import { JurHome } from './pages/jur/JurHome';
@@ -12,6 +15,8 @@ import { Contact } from './pages/Contact';
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
+
       <Routes>
         {/* Root Splitter */}
         <Route path="/" element={<LandingSplitter />} />

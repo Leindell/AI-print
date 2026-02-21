@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowDown, Send, Camera, Image as ImageIcon, Gift, FileText, ArrowRight } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
 import { services } from '../../data/services';
-import { TG_MANAGER } from '../../config/links';
+import { TG_BOT } from '../../config/links';
 
 export const FizHome: React.FC = () => {
   const scrollToServices = () => {
@@ -45,7 +45,7 @@ export const FizHome: React.FC = () => {
             </Button>
             
             <a 
-              href={TG_MANAGER}
+              href={TG_BOT}
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex h-12 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900/50 px-8 text-white backdrop-blur-sm transition-colors hover:bg-zinc-800"
