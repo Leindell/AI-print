@@ -2,37 +2,26 @@ import React from 'react';
 
 export const Logo: React.FC<{ className?: string }> = ({ className }) => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 240 60"
-      fill="none"
-      className={className}
-    >
-      {/* Text "Ai.Print" */}
-      <text
-        x="0"
-        y="40"
-        fontFamily="Montserrat, sans-serif"
-        fontSize="36"
-        fontWeight="bold"
-        fill="currentColor"
-        letterSpacing="0.5"
+    <div className={`flex items-center gap-2 ${className}`}>
+      {/* Triangle Icon */}
+      <svg
+        viewBox="0 0 100 100"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-full w-auto aspect-square"
       >
-        Ai.Print
-      </text>
-      
-      {/* Subtitle "studio" */}
-      <text
-        x="2"
-        y="56"
-        fontFamily="Montserrat, sans-serif"
-        fontSize="12"
-        fill="currentColor"
-        opacity="0.7"
-        letterSpacing="1"
-      >
-        studio
-      </text>
-    </svg>
+        <path 
+          d="M50 15 L85 85 H15 L50 15Z" 
+          stroke="currentColor" 
+          strokeWidth="12" 
+          strokeLinecap="round" 
+          strokeLinejoin="round"
+        />
+      </svg>
+      <div className="flex flex-col leading-none">
+        <span className="font-bold text-lg tracking-wide">Ai</span>
+        <span className="text-[0.6rem] font-bold tracking-[0.2em] uppercase opacity-80">Print</span>
+      </div>
+    </div>
   );
 };

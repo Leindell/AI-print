@@ -1,243 +1,182 @@
-import { LucideIcon, Printer, FileText, Image, Briefcase, Box, Layers, PenTool, Calendar, CreditCard, Scissors } from 'lucide-react';
-
 export interface Service {
   id: string;
-  slug: string;
-  title: string;
-  shortDesc?: string;
-  fullDesc?: string;
-  price: string;
-  deadline?: string;
-  orderSteps?: string[];
-  details?: string[];
-  minQty?: string;
-  turnaroundTime?: string;
-  tags?: string[];
-}
-
-export interface Category {
-  id: string;
-  slug: string;
   title: string;
   description: string;
-  icon: LucideIcon;
-  services: Service[];
+  price: number;
+  unit: string;
+  category: 'fiz' | 'jur';
+  subcategory: 'gifts' | 'photo-printing' | 'documents' | 'ai-design';
+  slug: string;
 }
 
-export const FIZ_CATEGORIES: Category[] = [
+export const services: Service[] = [
+  // Gifts
   {
-    id: "photos",
-    slug: "photo-print",
-    title: "Фотопечать",
-    description: "Печать снимков любых форматов, от Polaroid до А4",
-    icon: Image,
-    services: [
-      {
-        id: "f1",
-        slug: "polaroid",
-        title: "Печать Polaroid",
-        shortDesc: "В стиле ретро снимков",
-        fullDesc: "Классический формат 10x12 см с белой рамкой. Идеально для мудбордов, подарков и сохранения воспоминаний в винтажном стиле. Печать на плотной фотобумаге.",
-        price: "от 45 ₽/шт",
-        deadline: "15 мин",
-        minQty: "1 шт",
-        tags: ["Хит", "Подарок"],
-        orderSteps: ["Загрузите фото", "Выберите количество", "Оплатите онлайн или при получении"]
-      },
-      {
-        id: "f2",
-        slug: "10x15",
-        title: "Стандарт 10x15",
-        shortDesc: "Классическая фотопечать",
-        fullDesc: "Самый популярный формат для фотоальбомов. Глянцевая или матовая бумага на выбор. Высокая цветопередача.",
-        price: "от 15 ₽/шт",
-        deadline: "1 час",
-        minQty: "1 шт",
-        tags: ["Популярное"],
-        orderSteps: ["Пришлите фото", "Укажите тип бумаги", "Заберите заказ"]
-      },
-      {
-        id: "f3",
-        slug: "a4",
-        title: "Печать А4",
-        shortDesc: "Большие снимки",
-        fullDesc: "Формат 21x30 см. Подходит для портретов и вставки в рамки.",
-        price: "от 80 ₽/шт",
-        deadline: "1 час",
-        minQty: "1 шт"
-      }
-    ]
+    id: '1',
+    title: 'Подарочный бокс',
+    description: 'Бокс с вашими фото в стиле полароид от 8 до 15 фото + уникальное наполнение открытка + стикер + 3д сткер + пробник духов',
+    price: 490,
+    unit: 'шт.',
+    category: 'fiz',
+    subcategory: 'gifts',
+    slug: 'gift-box'
   },
   {
-    id: "docs",
-    slug: "documents",
-    title: "Документы",
-    description: "Копирование, сканирование, печать файлов",
-    icon: FileText,
-    services: [
-      { 
-        id: "f4", 
-        slug: "copy", 
-        title: "Ксерокопия", 
-        shortDesc: "Ч/Б и цветная",
-        fullDesc: "Быстрая ксерокопия документов. Автоматическая подача для больших объемов.",
-        price: "10 ₽/стр",
-        deadline: "Моментально",
-        minQty: "1 стр"
-      },
-      { 
-        id: "f5", 
-        slug: "scan", 
-        title: "Сканирование", 
-        shortDesc: "В PDF или JPG",
-        fullDesc: "Сканирование документов с отправкой на почту или записью на флешку.",
-        price: "15 ₽/стр",
-        deadline: "Моментально",
-        minQty: "1 стр"
-      },
-      {
-        id: "f6",
-        slug: "print-docs",
-        title: "Распечатка",
-        shortDesc: "С флешки или почты",
-        fullDesc: "Печать документов с любых носителей. Ч/Б и цветная печать.",
-        price: "от 10 ₽/стр",
-        deadline: "Моментально",
-        minQty: "1 стр"
-      }
-    ]
+    id: '2',
+    title: 'Подарочный конверт',
+    description: 'Подарочный конверт с вашими фото в стиле полароид от 4 до 9 шт',
+    price: 290,
+    unit: 'шт.',
+    category: 'fiz',
+    subcategory: 'gifts',
+    slug: 'gift-envelope'
   },
-  {
-    id: "souvenirs",
-    slug: "souvenirs",
-    title: "Сувениры",
-    description: "Печать на кружках, футболках, холстах",
-    icon: Box,
-    services: [
-      {
-        id: "f7",
-        slug: "mugs",
-        title: "Печать на кружках",
-        shortDesc: "Белые и цветные",
-        fullDesc: "Нанесение любого изображения или надписи на керамическую кружку. Стойкое покрытие.",
-        price: "от 450 ₽",
-        deadline: "1 день",
-        minQty: "1 шт",
-        tags: ["Подарок"]
-      },
-      {
-        id: "f8",
-        slug: "tshirts",
-        title: "Печать на футболках",
-        shortDesc: "Принты любой сложности",
-        fullDesc: "Прямая печать или термоперенос. Футболки из 100% хлопка в наличии.",
-        price: "от 900 ₽",
-        deadline: "1-2 дня",
-        minQty: "1 шт"
-      }
-    ]
-  }
-];
 
-export const JUR_CATEGORIES: Category[] = [
+  // Photo Printing
   {
-    id: "polygraphy",
-    slug: "polygraphy",
-    title: "Полиграфия",
-    description: "Визитки, листовки, буклеты для бизнеса",
-    icon: Layers,
-    services: [
-      {
-        id: "j1",
-        slug: "business-cards",
-        title: "Визитки",
-        shortDesc: "Цифровая и офсетная печать",
-        fullDesc: "Стандартные визитки 90x50 мм или евроформат. Мелованная бумага 300г, лен, touch cover.",
-        price: "от 2.5 ₽/шт",
-        deadline: "от 1 часа",
-        minQty: "100 шт",
-        tags: ["B2B"],
-        details: ["Тиражи от 100 шт", "Срок от 1 часа", "Дизайн макета"]
-      },
-      {
-        id: "j2",
-        slug: "flyers",
-        title: "Листовки",
-        shortDesc: "А6, А5, А4",
-        fullDesc: "Рекламные листовки для раздачи и стоек. Офсетная печать больших тиражей.",
-        price: "от 1.8 ₽/шт",
-        deadline: "1-3 дня",
-        minQty: "1000 шт",
-        details: ["Тиражи от 1000 шт", "Глянцевая бумага 130г"]
-      },
-      {
-        id: "j3",
-        slug: "booklets",
-        title: "Буклеты",
-        shortDesc: "Евробуклеты, 2 фальца",
-        fullDesc: "Информационные буклеты для выставок и офисов.",
-        price: "от 15 ₽/шт",
-        deadline: "1-3 дня",
-        minQty: "100 шт"
-      }
-    ]
+    id: '3',
+    title: 'Печать фото 10х15 (Глянец)',
+    description: 'Качественная печать фотографий 10х15 на глянцевой бумаге',
+    price: 25,
+    unit: 'шт.',
+    category: 'fiz',
+    subcategory: 'photo-printing',
+    slug: 'photo-10x15'
   },
   {
-    id: "large-format",
-    slug: "large-format",
-    title: "Широкоформатная печать",
-    description: "Баннеры, плакаты, чертежи",
-    icon: Printer,
-    services: [
-      { 
-        id: "j4", 
-        slug: "banners", 
-        title: "Баннеры", 
-        shortDesc: "Люверсы, проклейка",
-        fullDesc: "Печать на баннерной ткани Frontlit. Устойчивость к выгоранию.",
-        price: "от 450 ₽/м²",
-        deadline: "1-2 дня",
-        minQty: "1 м²"
-      },
-      { 
-        id: "j5", 
-        slug: "drawings", 
-        title: "Печать чертежей", 
-        shortDesc: "А2, А1, А0",
-        fullDesc: "Инженерная печать чертежей и схем. Фальцовка по ГОСТ.",
-        price: "от 150 ₽/лист",
-        deadline: "1 час",
-        minQty: "1 лист"
-      }
-    ]
+    id: '10',
+    title: 'Печать фото А4',
+    description: 'Печать фотографий формата А4',
+    price: 100,
+    unit: 'шт.',
+    category: 'fiz',
+    subcategory: 'photo-printing',
+    slug: 'photo-a4'
   },
   {
-    id: "branding",
-    slug: "branding",
-    title: "Брендирование",
-    description: "Сувенирная продукция с логотипом",
-    icon: Briefcase,
-    services: [
-      {
-        id: "j6",
-        slug: "calendars",
-        title: "Календари",
-        shortDesc: "Квартальные, настольные",
-        fullDesc: "Фирменные календари с логотипом компании. Отличный корпоративный подарок.",
-        price: "от 250 ₽/шт",
-        deadline: "3-5 дней",
-        minQty: "10 шт"
-      },
-      {
-        id: "j7",
-        slug: "pens",
-        title: "Ручки с логотипом",
-        shortDesc: "Тампопечать, гравировка",
-        fullDesc: "Нанесение логотипа на пластиковые и металлические ручки.",
-        price: "от 35 ₽/шт",
-        deadline: "3-5 дней",
-        minQty: "50 шт"
-      }
-    ]
+    id: '9',
+    title: 'Печать фото А3',
+    description: 'Печать фотографий формата А3',
+    price: 350,
+    unit: 'шт.',
+    category: 'fiz',
+    subcategory: 'photo-printing',
+    slug: 'photo-a3'
+  },
+
+  // Documents
+  {
+    id: '8',
+    title: 'Печать документов ЧБ / цвет (А4)',
+    description: 'Ч/б и цветная печать документов формата А4',
+    price: 10,
+    unit: 'шт.',
+    category: 'fiz',
+    subcategory: 'documents',
+    slug: 'print-documents-a4'
+  },
+  {
+    id: '4',
+    title: 'Копирование документов',
+    description: 'Копирование документов',
+    price: 15,
+    unit: 'шт.',
+    category: 'fiz',
+    subcategory: 'documents',
+    slug: 'copy-documents'
+  },
+  {
+    id: '14',
+    title: 'Сканирование',
+    description: 'Сканирование документов',
+    price: 30,
+    unit: 'шт.',
+    category: 'fiz',
+    subcategory: 'documents',
+    slug: 'scanning'
+  },
+  {
+    id: '5',
+    title: 'Ламинирование А4',
+    description: 'Ламинирование документов формата А4',
+    price: 50,
+    unit: 'шт.',
+    category: 'fiz',
+    subcategory: 'documents',
+    slug: 'lamination-a4'
+  },
+  {
+    id: '15',
+    title: 'Фото на документы',
+    description: 'Фото на паспорт, визы, ВНЖ и другие документы',
+    price: 450,
+    unit: 'шт.',
+    category: 'fiz',
+    subcategory: 'documents',
+    slug: 'photo-doc'
+  },
+
+  // AI Services / Design
+  {
+    id: '17',
+    title: 'AI-портрет',
+    description: 'AI-портрет по фото + печать; без печати цена та же',
+    price: 250,
+    unit: 'шт.',
+    category: 'fiz',
+    subcategory: 'ai-design',
+    slug: 'ai-portrait'
+  },
+  {
+    id: '16',
+    title: 'AI-Дизайн',
+    description: 'Уникальные открытки и креативы с помощью нейросетей',
+    price: 250,
+    unit: 'услуга',
+    category: 'fiz', // Changed to fiz as per request to group under AI-services
+    subcategory: 'ai-design',
+    slug: 'ai-design'
+  },
+  {
+    id: '7',
+    title: 'Оживление фото',
+    description: 'Оживление фото с помощью AI-технологий',
+    price: 100,
+    unit: 'шт.',
+    category: 'fiz',
+    subcategory: 'ai-design',
+    slug: 'ai-photo-animate'
+  },
+  {
+    id: '6',
+    title: 'Подготовка макета к печати',
+    description: 'Профессиональная подготовка макетов визиток, листовок, сертификатов и др.',
+    price: 500,
+    unit: 'услуга',
+    category: 'fiz', // Changed to fiz as per request to group under AI-services/Design
+    subcategory: 'ai-design',
+    slug: 'layout-design'
+  },
+  
+  // Keeping Jur services for reference but they won't be shown in catalog
+  {
+    id: '11',
+    title: 'Визитки',
+    description: 'Оперативная печать визиток небольшими тиражами',
+    price: 10,
+    unit: 'шт.',
+    category: 'jur',
+    subcategory: 'ai-design', // Placeholder
+    slug: 'business-cards'
+  },
+  {
+    id: '13',
+    title: 'Сертификаты / листовки / флаеры',
+    description: 'Печать сертификатов, листовок и флаеров',
+    price: 15,
+    unit: 'шт.',
+    category: 'jur',
+    subcategory: 'ai-design', // Placeholder
+    slug: 'flyers'
   }
 ];

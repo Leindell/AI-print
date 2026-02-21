@@ -1,20 +1,61 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# AI Print Studio
 
-# Run and deploy your AI Studio app
+Fullstack application for a printing studio with Telegram integration.
 
-This contains everything you need to run your app locally.
+## Stack
 
-View your app in AI Studio: https://ai.studio/apps/3a7364c1-034c-4032-b92e-55f23444ce4b
+- **Frontend:** React, Vite, TailwindCSS
+- **Backend:** Flask (Python)
+- **Bot:** FastAPI, Aiogram (Python)
 
-## Run Locally
+## Setup
 
-**Prerequisites:**  Node.js
+### Prerequisites
 
+- Node.js & npm
+- Python 3.8+
+- Telegram Bot Token (from @BotFather)
+- Telegram Chat ID (where orders will be sent)
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Environment Variables
+
+Create `.env` in the root directory:
+
+```env
+# Bot Configuration
+BOT_TOKEN=your_bot_token_here
+MANAGER_CHAT_ID=your_chat_id_here
+BOT_SECRET=your_secret_key_here
+
+# Backend Configuration
+BOT_API_URL=http://localhost:8000/api/bot/orders
+```
+
+### Installation & Running
+
+1.  **Frontend:**
+    ```bash
+    npm install
+    npm run dev
+    ```
+
+2.  **Backend (Flask):**
+    ```bash
+    cd backend
+    pip install -r requirements.txt
+    python app.py
+    ```
+
+3.  **Bot (FastAPI):**
+    ```bash
+    cd bot
+    pip install -r requirements.txt
+    python main.py
+    ```
+
+## Features
+
+- Service catalog for Individuals and Businesses.
+- Order form with file upload.
+- Orders are sent to a Telegram chat via a bot.
+- Dark theme UI.

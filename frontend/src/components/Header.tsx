@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, Phone, MapPin, Clock } from 'lucide-react';
-import { Button } from './ui/Button';
+import { Menu, X } from 'lucide-react';
 import { Logo } from './Logo';
 
 export const Header: React.FC = () => {
@@ -18,47 +17,49 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+    <header className="sticky top-0 z-50 w-full border-b border-zinc-900 bg-black/80 backdrop-blur-md">
+      <div className="container mx-auto flex h-20 items-center justify-between px-4">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 font-bold text-xl tracking-tighter text-white group">
-          <Logo className="h-12 w-auto text-white transition-opacity group-hover:opacity-90" />
+        <Link to="/" className="flex items-center gap-3 group">
+          <Logo className="h-10 w-auto text-white transition-opacity group-hover:opacity-90" />
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-12">
           {/* Switcher */}
           <div className="flex items-center rounded-full bg-zinc-900 p-1 border border-zinc-800">
             <button
               onClick={() => handleSwitch('fiz')}
-              className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${
-                isFiz ? 'bg-zinc-100 text-zinc-900 shadow-sm' : 'text-zinc-400 hover:text-zinc-200'
+              className={`rounded-full px-5 py-2 text-xs font-medium transition-all ${
+                isFiz ? 'bg-white text-black shadow-sm' : 'text-zinc-500 hover:text-zinc-300'
               }`}
             >
               Частным лицам
             </button>
             <button
               onClick={() => handleSwitch('jur')}
-              className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${
-                isJur ? 'bg-zinc-100 text-zinc-900 shadow-sm' : 'text-zinc-400 hover:text-zinc-200'
+              className={`rounded-full px-5 py-2 text-xs font-medium transition-all ${
+                isJur ? 'bg-white text-black shadow-sm' : 'text-zinc-500 hover:text-zinc-300'
               }`}
             >
               Для бизнеса
             </button>
           </div>
 
-          <div className="h-6 w-px bg-zinc-800" />
+          <div className="h-8 w-px bg-zinc-900" />
 
-          <Link to={isJur ? "/jur/services" : "/fiz/services"} className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
-            Услуги
-          </Link>
-          <Link to="/about" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
-            О студии
-          </Link>
-          <Link to="/contact" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
-            Контакты
-          </Link>
-        </nav>
+          <nav className="flex items-center gap-8">
+            <Link to={isJur ? "/jur/services" : "/fiz/services"} className="text-xs font-medium text-zinc-400 hover:text-white transition-colors uppercase tracking-wider">
+              Услуги
+            </Link>
+            <Link to="/about" className="text-xs font-medium text-zinc-400 hover:text-white transition-colors uppercase tracking-wider">
+              О студии
+            </Link>
+            <Link to="/contact" className="text-xs font-medium text-zinc-400 hover:text-white transition-colors uppercase tracking-wider">
+              Контакты
+            </Link>
+          </nav>
+        </div>
 
         {/* Mobile Menu Button */}
         <button className="md:hidden text-zinc-300" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -68,7 +69,7 @@ export const Header: React.FC = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden border-t border-zinc-800 bg-zinc-950 p-4 space-y-4">
+        <div className="md:hidden border-t border-zinc-900 bg-black p-4 space-y-4">
            <div className="flex flex-col gap-2 p-2 bg-zinc-900 rounded-xl">
             <button
               onClick={() => handleSwitch('fiz')}
@@ -88,13 +89,13 @@ export const Header: React.FC = () => {
             </button>
           </div>
           <nav className="flex flex-col gap-4 px-2">
-            <Link to={isJur ? "/jur/services" : "/fiz/services"} onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-zinc-300">
+            <Link to={isJur ? "/jur/services" : "/fiz/services"} onClick={() => setIsMenuOpen(false)} className="text-sm font-medium text-zinc-300 uppercase tracking-wider">
               Услуги
             </Link>
-            <Link to="/about" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-zinc-300">
+            <Link to="/about" onClick={() => setIsMenuOpen(false)} className="text-sm font-medium text-zinc-300 uppercase tracking-wider">
               О студии
             </Link>
-            <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-zinc-300">
+            <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="text-sm font-medium text-zinc-300 uppercase tracking-wider">
               Контакты
             </Link>
           </nav>
